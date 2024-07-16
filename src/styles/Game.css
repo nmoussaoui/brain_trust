@@ -1,0 +1,27 @@
+/* Style de base pour le minuteur */
+.timer {
+    font-size: 2rem;
+    transition: color 1s ease;
+  }
+  
+  /* Transition de couleur pour les différentes étapes */
+  .timer.less-than-30 {
+    color: orange;
+  }
+  
+  .timer.less-than-20 {
+    color: red;
+  }
+  
+  /* Ajout d'une animation d'impact */
+  @keyframes impact {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .timer.impact {
+    color: red; /* Assurez-vous qu'il soit rouge lorsqu'il est dans la période critique */
+    animation: impact 1s infinite; /* Animation d'impact à chaque seconde */
+  }
+  

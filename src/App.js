@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-
+import Game from './components/Game';
+import HomePage from './components/HomePage';
+import Setup from './components/Setup';
 function App() {
+  const [currentStep, setCurrentStep] = useState('home');
+  const [players, setPlayers] = useState([]);
+  const [teams, setTeams] = useState([]);
+
+  const startSetup = () => {
+    setCurrentStep('setup');
+  };
+
+  const startGame = (players, teams) => {
+    setPlayers(players);
+    setTeams(teams);
+    setCurrentStep('game');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentStep === 'home' && <HomePage startSetup={startSetup} />}
+      {currentStep === 'setup' && <Setup startGame={startGame} />}
+      {currentStep === 'game' && <Game players={players} teams={teams} />}
     </div>
   );
 }

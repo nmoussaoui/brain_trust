@@ -1,0 +1,39 @@
+[
+    {
+      "category": "Cuisine",
+      "questions": [
+        { "difficulty": 2, "question": "Quels sont les deux ingrédients principaux d'une omelette classique ?", "answer": "œufs et beurre" }
+      ]
+    },
+    {
+      "category": "Danse",
+      "questions": [
+        { "difficulty": 1, "question": "Quel est le nom de la danse traditionnelle espagnole souvent accompagnée de guitare ?", "answer": "Flamenco" }
+      ]
+    },
+    {
+      "category": "Sport",
+      "questions": [
+        { "difficulty": 3, "question": "Quel sport utilise une batte, une balle et des bases disposées en losange ?", "answer": "Baseball" }
+      ]
+    },
+    {
+      "category": "Musique",
+      "questions": [
+        { "difficulty": 3, "question": "Quel compositeur classique est connu pour ses symphonies, notamment la Symphonie n°9 en ré mineur, 'Choral' ?", "answer": "Beethoven" }
+      ]
+    },
+    {
+      "category": "Cinéma",
+      "questions": [
+        { "difficulty": 5, "question": "Qui a réalisé le film 'Inception' sorti en 2010 ?", "answer": "Christopher Nolan" }
+      ]
+    },
+    {
+      "category": "Histoire",
+      "questions": [
+        { "difficulty": 4, "question": "En quelle année a eu lieu la Révolution française ?", "answer": "1789" }
+      ]
+    }
+  ]
+  
