@@ -1,39 +1,162 @@
 [
-    {
-      "category": "Cuisine",
-      "questions": [
-        { "difficulty": 2, "question": "Quels sont les deux ingrédients principaux d'une omelette classique ?", "answer": "œufs et beurre" }
-      ]
-    },
-    {
-      "category": "Danse",
-      "questions": [
-        { "difficulty": 1, "question": "Quel est le nom de la danse traditionnelle espagnole souvent accompagnée de guitare ?", "answer": "Flamenco" }
-      ]
-    },
-    {
-      "category": "Sport",
-      "questions": [
-        { "difficulty": 3, "question": "Quel sport utilise une batte, une balle et des bases disposées en losange ?", "answer": "Baseball" }
-      ]
-    },
-    {
-      "category": "Musique",
-      "questions": [
-        { "difficulty": 3, "question": "Quel compositeur classique est connu pour ses symphonies, notamment la Symphonie n°9 en ré mineur, 'Choral' ?", "answer": "Beethoven" }
-      ]
-    },
-    {
-      "category": "Cinéma",
-      "questions": [
-        { "difficulty": 5, "question": "Qui a réalisé le film 'Inception' sorti en 2010 ?", "answer": "Christopher Nolan" }
-      ]
-    },
-    {
-      "category": "Histoire",
-      "questions": [
-        { "difficulty": 4, "question": "En quelle année a eu lieu la Révolution française ?", "answer": "1789" }
-      ]
-    }
-  ]
-  
+  {
+    "category": "Cuisine",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quel fruit est connu pour être jaune et courbé ?",
+        "answer": "Banane",
+        "options": ["Pomme", "Banane", "Cerise"]
+      },
+      { "difficulty": 2, "question": "Quels sont les deux ingrédients principaux d'une omelette classique ?", "answer": "œufs et beurre" },
+      { "difficulty": 3, "question": "Quel ingrédient principal trouve-t-on dans un risotto ?", "answer": "Riz" },
+      { "difficulty": 4, "question": "Quel est le plat national de l'Espagne à base de riz et de fruits de mer ?", "answer": "Paella" },
+      {
+        "difficulty": 5,
+        "question": "Quel est le nom du chef cuisinier français qui a popularisé la cuisine moléculaire ?",
+        "answer": "Hervé This"
+      }
+    ]
+  },
+  {
+    "category": "Danse",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quel est le nom de la danse traditionnelle espagnole souvent accompagnée de guitare ?",
+        "answer": "Flamenco",
+        "options": ["Salsa", "Flamenco", "Tango"]
+      },
+      {
+        "difficulty": 2,
+        "question": "Quelle danse brésilienne est connue pour ses mouvements rapides et acrobatiques ?",
+        "answer": "Capoeira"
+      },
+      {
+        "difficulty": 3,
+        "question": "Quel danseur et chorégraphe est célèbre pour sa contribution au ballet moderne ?",
+        "answer": "Rudolf Noureev"
+      },
+      {
+        "difficulty": 4,
+        "question": "Quelle danse est traditionnellement exécutée lors du carnaval de Rio de Janeiro ?",
+        "answer": "Samba"
+      },
+      { "difficulty": 5, "question": "Quel est le nom de la danse traditionnelle japonaise exécutée par des geishas ?", "answer": "Mai" }
+    ]
+  },
+  {
+    "category": "Sport",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quel sport se joue avec un ballon rond et deux buts ?",
+        "answer": "Football",
+        "options": ["Basketball", "Football", "Tennis"]
+      },
+      { "difficulty": 2, "question": "Quel sport se joue avec un volant et une raquette ?", "answer": "Badminton" },
+      { "difficulty": 3, "question": "Quel sport utilise une batte, une balle et des bases disposées en losange ?", "answer": "Baseball" },
+      { "difficulty": 4, "question": "Quel pays a remporté la Coupe du Monde de la FIFA en 1998 ?", "answer": "France" },
+      { "difficulty": 5, "question": "Quel athlète détient le record du monde du 100 mètres ?", "answer": "Usain Bolt" }
+    ]
+  },
+  {
+    "category": "Musique",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quel instrument a six cordes et est souvent utilisé dans le rock ?",
+        "answer": "Guitare",
+        "options": ["Piano", "Guitare", "Batterie"]
+      },
+      {
+        "difficulty": 2,
+        "question": "Quel chanteur est connu comme le 'Roi de la Pop' ?",
+        "answer": "Michael Jackson"
+      },
+      {
+        "difficulty": 3,
+        "question": "Quel compositeur classique est connu pour ses symphonies, notamment la Symphonie n°9 en ré mineur, 'Choral' ?",
+        "answer": "Beethoven"
+      },
+      {
+        "difficulty": 4,
+        "question": "Quelle chanteuse a interprété la chanson 'Rolling in the Deep' ?",
+        "answer": "Adele"
+      },
+      {
+        "difficulty": 5,
+        "question": "Quel est le nom du festival de musique qui se déroule chaque année à Indio, en Californie ?",
+        "answer": "Coachella"
+      }
+    ]
+  },
+  {
+    "category": "Cinéma",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Qui est l'acteur principal dans le film 'Titanic' ?",
+        "answer": "Leonardo DiCaprio",
+        "options": ["Brad Pitt", "Leonardo DiCaprio", "Tom Hanks"]
+      },
+      { "difficulty": 2, "question": "Quel film a remporté l'Oscar du meilleur film en 2020 ?", "answer": "Parasite" },
+      { "difficulty": 3, "question": "Qui a réalisé le film 'Inception' sorti en 2010 ?", "answer": "Christopher Nolan" },
+      {
+        "difficulty": 4,
+        "question": "Quel est le nom du personnage principal dans la série de films 'Indiana Jones' ?",
+        "answer": "Indiana Jones"
+      },
+      {
+        "difficulty": 5,
+        "question": "Quel réalisateur est connu pour ses films 'Pulp Fiction' et 'Kill Bill' ?",
+        "answer": "Quentin Tarantino"
+      }
+    ]
+  },
+  {
+    "category": "Histoire",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quel est le nom du premier président des États-Unis ?",
+        "answer": "George Washington",
+        "options": ["Abraham Lincoln", "George Washington", "Thomas Jefferson"]
+      },
+      { "difficulty": 2, "question": "En quelle année l'homme a-t-il marché sur la lune pour la première fois ?", "answer": "1969" },
+      { "difficulty": 3, "question": "Qui était le roi de France pendant la Révolution française ?", "answer": "Louis XVI" },
+      { "difficulty": 4, "question": "En quelle année a eu lieu la Révolution française ?", "answer": "1789" },
+      { "difficulty": 5, "question": "Quel empire ancien a construit les pyramides de Gizeh ?", "answer": "L'Empire égyptien" }
+    ]
+  },
+  {
+    "category": "Géographie",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quelle est la capitale de la France ?",
+        "answer": "Paris",
+        "options": ["Londres", "Berlin", "Paris"]
+      },
+      { "difficulty": 2, "question": "Quel est le plus grand désert du monde ?", "answer": "Sahara" },
+      { "difficulty": 3, "question": "Quelle est la plus longue rivière du monde ?", "answer": "Le Nil" },
+      { "difficulty": 4, "question": "Quel est le plus haut sommet du monde ?", "answer": "Everest" },
+      { "difficulty": 5, "question": "Quelle est la capitale de l'Australie ?", "answer": "Canberra" }
+    ]
+  },
+  {
+    "category": "Science",
+    "questions": [
+      {
+        "difficulty": 1,
+        "question": "Quel est l'élément chimique dont le symbole est 'O' ?",
+        "answer": "Oxygène",
+        "options": ["Oxygène", "Or", "Osmium"]
+      },
+      { "difficulty": 2, "question": "Quelle planète est connue comme la planète rouge ?", "answer": "Mars" },
+      { "difficulty": 3, "question": "Qui a développé la théorie de la relativité ?", "answer": "Albert Einstein" },
+      { "difficulty": 4, "question": "Quel est l'organe principal du système nerveux humain ?", "answer": "Cerveau" },
+      { "difficulty": 5, "question": "Quel est l'élément le plus abondant dans l'univers ?", "answer": "Hydrogène" }
+    ]
+  }
+]
