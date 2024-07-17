@@ -11,7 +11,7 @@ const Game = ({ players, teams }) => {
   const [currentPlayerIndex, setCurrentPlayerIndex] = useState(0);
   const [currentTeamIndex, setCurrentTeamIndex] = useState(0);
   const [theme, setTheme] = useState('');
-  const [confidence, setConfidence] = useState(null);
+  const [confidence, setConfidence] = useState(5);
   const [timeLeft, setTimeLeft] = useState(60); // Temps initialisé à 60 secondes
   const teamPlay = teams.length > 0;
 
@@ -50,7 +50,7 @@ const Game = ({ players, teams }) => {
     } else {
       setCurrentPlayerIndex((prevIndex) => (prevIndex + 1) % players.length);
     }
-    setConfidence(null); // Reset the confidence for the next player
+    setConfidence(5); // Reset the confidence for the next player
     setCurrentQuestion(null); // Reset the current question
     const themes = questionsData.map(q => q.category);
     const randomTheme = themes[Math.floor(Math.random() * themes.length)];
@@ -100,37 +100,53 @@ const Game = ({ players, teams }) => {
 
   return (
     <div className="container">
-      <h1>Brain Trust</h1>
+      <button className="quit-button">Quitter</button>
       <Scoreboard score={score} teamPlay={teamPlay} />
-      {confidence === null ? (
+      <h2 className="theme">Thème : {theme}</h2>
+      <p className="current-player">
+        {teamPlay
+          ? `Équipe ${teams[currentTeamIndex].name} à vous de jouer`
+          : `Joueur ${players[currentPlayerIndex].name} à vous de jouer`}
+      </p>
+      {!currentQuestion && (
+        <div className="confidence-container">
+          <p className="confidence-label">Confiance</p>
+          <div className="confidence-buttons">
+            {confidence < 10 && (
+              <button 
+                className="confidence-button" 
+                onClick={() => setConfidence((prev) => Math.min(prev + 1, 10))}
+              >
+                ▲
+              </button>
+            )}
+            <div className="confidence-value">{confidence}</div>
+            {confidence > 1 && (
+              <button 
+                className="confidence-button" 
+                onClick={() => setConfidence((prev) => Math.max(prev - 1, 1))}
+              >
+                ▼
+              </button>
+            )}
+          </div>
+          <button className="validate-button" onClick={() => getNextQuestion(confidence)}>Valider</button>
+        </div>
+      )}
+      {currentQuestion && (
         <div>
-          <h2>Thème : {theme}</h2>
+          <Question currentQuestion={currentQuestion} />
+          <p className={timerClass}>Temps restant : {timeLeft} secondes</p>
           <PlayerInput
             currentPlayer={teamPlay ? teams[currentTeamIndex] : players[currentPlayerIndex]}
-            setConfidence={setConfidence}
-            getNextQuestion={getNextQuestion}
             handleScoreUpdate={handleScoreUpdate}
+            answerRequired={true}
+            currentQuestion={currentQuestion}
+            confidence={confidence}
             teamPlay={teamPlay}
+            timeLeft={timeLeft} // Passer le temps restant au composant PlayerInput
           />
         </div>
-      ) : (
-        currentQuestion && (
-          <div>
-            <div>
-              <Question currentQuestion={currentQuestion} />
-              <p className={timerClass}>Temps restant : {timeLeft} secondes</p>
-            </div>
-            <PlayerInput
-              currentPlayer={teamPlay ? teams[currentTeamIndex] : players[currentPlayerIndex]}
-              handleScoreUpdate={handleScoreUpdate}
-              answerRequired={true}
-              currentQuestion={currentQuestion}
-              confidence={confidence}
-              teamPlay={teamPlay}
-              timeLeft={timeLeft} // Passer le temps restant au composant PlayerInput
-            />
-          </div>
-        )
       )}
     </div>
   );

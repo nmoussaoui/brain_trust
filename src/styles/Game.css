@@ -1,27 +1,129 @@
 /* Style de base pour le minuteur */
 .timer {
-    font-size: 2rem;
-    transition: color 1s ease;
-  }
-  
-  /* Transition de couleur pour les différentes étapes */
-  .timer.less-than-30 {
-    color: orange;
-  }
-  
-  .timer.less-than-20 {
-    color: red;
-  }
-  
-  /* Ajout d'une animation d'impact */
-  @keyframes impact {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-  }
-  
-  .timer.impact {
-    color: red; /* Assurez-vous qu'il soit rouge lorsqu'il est dans la période critique */
-    animation: impact 1s infinite; /* Animation d'impact à chaque seconde */
-  }
-  
+  font-size: 2rem;
+  transition: color 1s ease;
+}
+
+/* Transition de couleur pour les différentes étapes */
+.timer.less-than-30 {
+  color: orange;
+}
+
+.timer.less-than-20 {
+  color: red;
+}
+
+/* Ajout d'une animation d'impact */
+@keyframes impact {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.timer.impact {
+  color: red; /* Assurez-vous qu'il soit rouge lorsqu'il est dans la période critique */
+  animation: impact 1s infinite; /* Animation d'impact à chaque seconde */
+}
+
+
+
+/* Style pour le bouton Quitter */
+.quit-button {
+  align-self: flex-start;
+  margin: 20px;
+  background-color: #ff4c4c;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quit-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Style pour le thème */
+.theme {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Style pour le joueur actuel */
+.current-player {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Style pour la confiance */
+.confidence-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.confidence-label {
+  font-size: 1.2rem;
+}
+
+.confidence-value {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+/* Style pour les boutons de confiance */
+.confidence-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.confidence-button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.confidence-button:hover {
+  color: #800080;
+  background-color: transparent;
+
+}
+
+.confidence-button:focus {
+  outline: none;
+}
+
+/* Style pour le bouton Valider */
+.validate-button {
+  background-color: #800080;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.validate-button:hover {
+  background-color: #4b0082;
+}
+
+/* Style pour le tableau de score */
+.scoreboard {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #800080;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+}

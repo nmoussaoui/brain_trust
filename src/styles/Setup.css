@@ -1,0 +1,124 @@
+body {
+    background-color: #e0dfd6;
+}
+
+.title-setup {
+    font-family: 'Odibee Sans', sans-serif;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+    color: #3d3d3d;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mb-3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.form-label {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-right: 20px;
+}
+
+.form-control {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 300px;
+}
+
+.btn-primary, .btn-secondary, .btn-success {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+    background-color: #0056b3;
+}
+
+.team-container, .player-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.team, .player {
+    background-color: #6225E6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    background-color: #E800B1;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.team-name, .player-name {
+    margin-bottom: 10px;
+}
+
+.add-button {
+    background-color: #FF7A4D;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    border: none;
+}
+
+.remove-button {
+    background-color: #FF0028;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    margin-left: 10px;
+}

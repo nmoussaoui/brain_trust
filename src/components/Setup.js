@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
+import '../styles/Setup.css';
 
 const Setup = ({ startGame }) => {
-  const [numPlayers, setNumPlayers] = useState(2);
-  const [playerNames, setPlayerNames] = useState([]);
+  const [playerNames, setPlayerNames] = useState(['']);
   const [teamPlay, setTeamPlay] = useState(false);
-  const [numTeams, setNumTeams] = useState(2);
   const [teamNames, setTeamNames] = useState([]);
   const [players, setPlayers] = useState([]);
   const [teams, setTeams] = useState([]);
@@ -16,10 +15,35 @@ const Setup = ({ startGame }) => {
     setPlayerNames(newPlayerNames);
   };
 
+  const addPlayer = () => {
+    setPlayerNames([...playerNames, '']);
+  };
+
+  const removePlayer = (index) => {
+    const newPlayerNames = playerNames.filter((_, i) => i !== index);
+    setPlayerNames(newPlayerNames);
+  };
+
   const handleTeamNameChange = (index, name) => {
     const newTeamNames = [...teamNames];
     newTeamNames[index] = name;
     setTeamNames(newTeamNames);
+  };
+
+  const addTeam = () => {
+    const newTeamId = `team-${teams.length + 1}`;
+    const newTeam = { id: newTeamId, name: '', players: [] };
+    setTeams([...teams, newTeam]);
+  };
+
+  const removeTeam = (index) => {
+    const teamId = teams[index].id;
+    const newTeams = teams.filter((_, i) => i !== index);
+    const newPlayers = players.map(player => 
+      player.team === teamId ? { ...player, team: null } : player
+    );
+    setTeams(newTeams);
+    setPlayers(newPlayers);
   };
 
   const setupPlayers = () => {
@@ -32,19 +56,22 @@ const Setup = ({ startGame }) => {
     setCurrentStep(2);
   };
 
-  const setupTeams = () => {
-    const initialTeams = Array.from({ length: numTeams }, (_, index) => ({
-      id: `team-${index + 1}`,
-      name: teamNames[index] || `Équipe ${index + 1}`,
-      players: [],
-    }));
-    setTeams(initialTeams);
-    setCurrentStep(4);
-  };
-
   const handlePlayerTeamChange = (playerId, teamId) => {
     const newPlayers = players.map(player =>
       player.id === playerId ? { ...player, team: teamId } : player
+    );
+    setPlayers(newPlayers);
+
+    const newTeams = teams.map(team => ({
+      ...team,
+      players: newPlayers.filter(player => player.team === team.id),
+    }));
+    setTeams(newTeams);
+  };
+
+  const removePlayerFromTeam = (playerId) => {
+    const newPlayers = players.map(player =>
+      player.id === playerId ? { ...player, team: null } : player
     );
     setPlayers(newPlayers);
 
@@ -63,36 +90,32 @@ const Setup = ({ startGame }) => {
     <div className="container">
       {currentStep === 1 && (
         <div>
-          <h1>Configuration du Jeu</h1>
-          <div className="mb-3">
-            <label className="form-label">Nombre de Joueurs :</label>
-            <input
-              type="number"
-              className="form-control"
-              value={numPlayers}
-              onChange={(e) => setNumPlayers(Number(e.target.value))}
-              min="2"
-              max="10"
-            />
+          <h1 className="title-setup">Configuration du Jeu</h1>
+          <div className="player-container">
+            {playerNames.map((name, index) => (
+              <div className="player" key={index}>
+                <div className="avatar">{index + 1}</div>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder={`Nom du Joueur ${index + 1}`}
+                  value={name}
+                  onChange={(e) => handlePlayerNameChange(index, e.target.value)}
+                />
+                {index > 0 && (
+                  <button className="remove-button" onClick={() => removePlayer(index)}>X</button>
+                )}
+              </div>
+            ))}
+            <div className="add-button" onClick={addPlayer}>+</div>
           </div>
-          {Array.from({ length: numPlayers }).map((_, index) => (
-            <div className="mb-3" key={index}>
-              <label className="form-label">Nom du Joueur {index + 1} :</label>
-              <input
-                type="text"
-                className="form-control"
-                value={playerNames[index] || ''}
-                onChange={(e) => handlePlayerNameChange(index, e.target.value)}
-              />
-            </div>
-          ))}
           <button className="btn btn-primary" onClick={setupPlayers}>Suivant</button>
         </div>
       )}
 
       {currentStep === 2 && (
         <div>
-          <h1>Jouer en équipe ou seul ?</h1>
+          <h1 className="title-setup">Configuration</h1>
           <button className="btn btn-secondary me-2" onClick={() => { setTeamPlay(false); handleStartGame(); }}>Seul</button>
           <button className="btn btn-secondary" onClick={() => { setTeamPlay(true); setCurrentStep(3); }}>Équipe</button>
         </div>
@@ -100,51 +123,41 @@ const Setup = ({ startGame }) => {
 
       {currentStep === 3 && teamPlay && (
         <div>
-          <h1>Configuration des Équipes</h1>
-          <div className="mb-3">
-            <label className="form-label">Nombre d'Équipes :</label>
-            <input
-              type="number"
-              className="form-control"
-              value={numTeams}
-              onChange={(e) => setNumTeams(Number(e.target.value))}
-              min="2"
-              max="10"
-            />
+          <h1 className="title-setup">Configuration des Équipes</h1>
+          <div className="team-container">
+            {teams.map((team, index) => (
+              <div className="team" key={team.id}>
+                <input
+                  type="text"
+                  className="form-control team-name"
+                  placeholder={`Nom de l'Équipe ${index + 1}`}
+                  value={teamNames[index] || ''}
+                  onChange={(e) => handleTeamNameChange(index, e.target.value)}
+                />
+                <div className="player-container">
+                  {players.filter(player => player.team === team.id).map(player => (
+                    <div className="player" key={player.id}>
+                      <div className="avatar">{player.id}</div>
+                      <div className="player-name">{player.name}</div>
+                      <button className="remove-button" onClick={() => removePlayerFromTeam(player.id)}>X</button>
+                    </div>
+                  ))}
+                  <select
+                    className="form-control"
+                    onChange={(e) => handlePlayerTeamChange(e.target.value, team.id)}
+                  >
+                    <option value="">Ajouter un joueur</option>
+                    {players.filter(player => player.team === null).map(player => (
+                      <option key={player.id} value={player.id}>{player.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <button className="remove-button" onClick={() => removeTeam(index)}>X</button>
+              </div>
+            ))}
+            <div className="add-button" onClick={addTeam}>+</div>
           </div>
-          {Array.from({ length: numTeams }).map((_, index) => (
-            <div className="mb-3" key={index}>
-              <label className="form-label">Nom de l'Équipe {index + 1} :</label>
-              <input
-                type="text"
-                className="form-control"
-                value={teamNames[index] || ''}
-                onChange={(e) => handleTeamNameChange(index, e.target.value)}
-              />
-            </div>
-          ))}
-          <button className="btn btn-primary" onClick={setupTeams}>Suivant</button>
-        </div>
-      )}
-
-      {currentStep === 4 && teamPlay && (
-        <div>
-          <h1>Répartition des Joueurs dans les Équipes</h1>
-          {teams.map((team, index) => (
-            <div key={team.id} className="mb-3">
-              <h3>{team.name}</h3>
-              {players.filter(player => player.team === team.id).map(player => (
-                <div key={player.id}>{player.name}</div>
-              ))}
-              <select className="form-select" onChange={(e) => handlePlayerTeamChange(e.target.value, team.id)}>
-                <option value="">Ajouter un joueur</option>
-                {players.filter(player => player.team === null).map(player => (
-                  <option key={player.id} value={player.id}>{player.name}</option>
-                ))}
-              </select>
-            </div>
-          ))}
-          <button className="btn btn-success" onClick={handleStartGame}>Commencer le Jeu</button>
+          <button className="btn btn-primary" onClick={handleStartGame}>Commencer le Jeu</button>
         </div>
       )}
     </div>
