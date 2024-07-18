@@ -87,7 +87,7 @@ const Setup = ({ startGame }) => {
   };
 
   return (
-    <div className="container">
+    <div className="setup-container">
       {currentStep === 1 && (
         <div>
           <h1 className="title-setup">Configuration du Jeu</h1>
@@ -103,7 +103,13 @@ const Setup = ({ startGame }) => {
                   onChange={(e) => handlePlayerNameChange(index, e.target.value)}
                 />
                 {index > 0 && (
-                  <button className="remove-button" onClick={() => removePlayer(index)}>X</button>
+                  <button className="remove-button" onClick={() => removePlayer(index)}>
+                    <svg width="16px" height="16px" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                      <g fill="#000000">
+                        <path d="M12.5,10.793L18.293,5L19.707,6.414L13.914,12.207L19.707,18L18.293,19.414L12.5,13.621L6.707,19.414L5.293,18L11.086,12.207L5.293,6.414L6.707,5L12.5,10.793Z"/>
+                      </g>
+                    </svg>
+                  </button>
                 )}
               </div>
             ))}
@@ -139,7 +145,13 @@ const Setup = ({ startGame }) => {
                     <div className="player" key={player.id}>
                       <div className="avatar">{player.id}</div>
                       <div className="player-name">{player.name}</div>
-                      <button className="remove-button" onClick={() => removePlayerFromTeam(player.id)}>X</button>
+                      <button className="remove-button" onClick={() => removePlayerFromTeam(player.id)}>
+                        <svg width="16px" height="16px" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                          <g fill="#000000">
+                            <path d="M12.5,10.793L18.293,5L19.707,6.414L13.914,12.207L19.707,18L18.293,19.414L12.5,13.621L6.707,19.414L5.293,18L11.086,12.207L5.293,6.414L6.707,5L12.5,10.793Z"/>
+                          </g>
+                        </svg>
+                      </button>
                     </div>
                   ))}
                   <select
@@ -152,7 +164,13 @@ const Setup = ({ startGame }) => {
                     ))}
                   </select>
                 </div>
-                <button className="remove-button" onClick={() => removeTeam(index)}>X</button>
+                <button className="remove-button" onClick={() => removeTeam(index)}>
+                  <svg width="16px" height="16px" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="#000000">
+                      <path d="M12.5,10.793L18.293,5L19.707,6.414L13.914,12.207L19.707,18L18.293,19.414L12.5,13.621L6.707,19.414L5.293,18L11.086,12.207L5.293,6.414L6.707,5L12.5,10.793Z"/>
+                    </g>
+                  </svg>
+                </button>
               </div>
             ))}
             <div className="add-button" onClick={addTeam}>+</div>
